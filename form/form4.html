@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>超级表单</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="form.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<script src="./build/jquery.min.js"></script>
+<script src="./build/react-with-addons.js"></script>
+<script src="./build/react-dom.js"></script>
+<script src="./build/browser.min.js"></script>
+<script type="text/javascript" src="json.js"></script>
+</head>
+<body>
+    <div class="form" id="form">
+    </div>
+    <script type="text/babel">
+    var field=['单行文字','多行文字','单项选择','多项选择','下拉框','数字','邮箱','电话','地理位置','时间','评分','微信扫码','子表单'];
+    var data=[{'title':'11111'}]
+    var json=[{"type":"text","title":"单行文字"},{"type":"textarea","title":"单行文字"}]
+    var a={"tt":[{"tt":11,"tt2":22}]}
+    var AddField=React.createClass({
+      getInitialState:function(){
+        return {"title":[{'title1':'1','title2':'2'}],"aa":"aaaa"};
+      },
+      handleClick:function(){
+        //this.replaceState({})
+        this.forceUpdate()
+
+      },
+      render:function(){
+        return <div>
+                  {json.map(function(item,i){
+                    if(item.type=="text"){
+                     return React.cloneElement(<Item data={a} tmp={<Item1 key={Math.random()}/>}/>,{key:22})
+                    };
+                    // if(item.type=="textarea"){
+                    //   return React.cloneElement(<Item1/>,{})
+                    // }
+                  })}
+                  <div onClick={this.handleClick}>222222222222</div>
+               </div>
+      }
+    });
+    var Item=React.createClass({
+      getInitialState:function(){
+        console.log(a);
+        return this.props.data;
+      },
+      change:function(e){
+        var newdata=e.target.value
+        //this.state.tt[0].tt=newdata;
+        this.state.tt[0].tt=e.target.value
+        this.replaceState(this.state);
+        //this.forceUpdate();
+        //this.setProps({})
+        console.log(this.props)
+      },
+      render:function(){
+        return <div><input type="text" value={this.state.tt[0].tt} placeholder={this.state.tt[0].tt2} onChange={this.change}/>{this.props.tmp}</div>
+      }
+    })
+    var Item1=React.createClass({
+      change:function(e){
+
+        var newdata=e.target.value
+        this.state.title[0].title1=newdata;
+        this.state.aa=e.target.value
+        this.replaceState(this.state);
+        //this.forceUpdate();
+      },
+      render:function(){
+        return <input type="text" value={3333333333333} placeholder={222} onChange={this.change}/>
+      }
+    })
+    ReactDOM.render(
+        <AddField />,
+        document.getElementById('form')
+        )
+    </script>
+
+</body>
+</html>
