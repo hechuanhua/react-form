@@ -6,7 +6,7 @@
 
 4、git add file   把文件添加到仓库
 
-5、git commit -m "comment" 把文件提交到仓库
+5、git commit -m "一些提交的备注信息" 把文件提交到仓库
 
 6、git status   查看仓库的状态
 
@@ -48,9 +48,9 @@
 
 16、ssh-keygen -t rsa -C "youremail@example.com"    ssh的公钥生成
 
-17、git remote add origingit git@github.com:michaelliao/learngit.git     把一个已有的本地仓库与远程库关联
+17、git remote add origin git@github.com:michaelliao/learngit.git     把一个已有的本地仓库与远程库关联
 
-18、git remote add origingit git@github.com:michaelliao/learngit.git      把本地仓库的内容推送到GitHub仓库
+18、git remote add origin git@github.com:michaelliao/learngit.git      把本地仓库的内容推送到GitHub仓库
 
 19、git checkout -b dev    创建新的分支，并且转到新的分支上，该语句可以拆分为量句话
     git branch dev     创建新的分支。
@@ -91,4 +91,5 @@
     命令git tag -d <tagname>可以删除一个本地标签；
     命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
 
-32、
+32、远程库已经准备好了，下一步是用命令git clone克隆一个本地库：$ git clone git@github.com:michaelliao/gitskills.git  
+    你也许还注意到，GitHub给出的地址不止一个，还可以用https://github.com/michaelliao/gitskills.git这样的地址。
