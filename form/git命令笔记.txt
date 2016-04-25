@@ -35,7 +35,7 @@
     一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 14、git reset HEAD file  把暂存区的修改撤销掉（unstage），重新放回工作区
 
-15、git rm file    删除一个文件
+15、git rm file    删除一个文件 1
 
     1).从工作目录，提交到stage。
     2).从stage提交到master。
