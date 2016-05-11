@@ -2,12 +2,12 @@
 
 react超级表单
 
-react ==> 用的是es5+react实现的 '\n
+react ==> 用的是es5+react实现的 
 
 查看：
 ```bash
 git clone https://github.com/hechuanhua/react-form.git 
-cd react-redux
+cd react
 npm install -g
 gulp
 ```
