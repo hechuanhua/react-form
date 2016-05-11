@@ -1,8 +1,6 @@
-# react-form
+#react超级表单
 
-react超级表单
-
-react ==> 用的是es5+react实现的 
+##react ==> 用的是es5+react实现的 
 
 查看：
 ```bash
@@ -12,7 +10,7 @@ npm install -g
 gulp
 ```
 
-react-redux  ==> 用react+redux+es6重构了一下
+##react-redux  ==> 用react+redux+es6重构了一下
 
 查看：
 ```bash
