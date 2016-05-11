@@ -1,18 +1,21 @@
-#react超级表单
+##react超级表单
 
 ##react ==> 用的是es5+react实现的 
-
-查看：
+最开始全局安装一下webpack和gulp
+```bash
+  npm install webpack gulp -g
+```
+查看react文件夹：
 ```bash
 git clone https://github.com/hechuanhua/react-form.git 
 cd react
-npm install -g
+npm install 
 gulp
 ```
 
 ##react-redux  ==> 用react+redux+es6重构了一下
 
-查看：
+查看react-redux文件夹：
 ```bash
 git clone https://github.com/hechuanhua/react-form.git 
 cd react-redux
