@@ -1,0 +1,412 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2015-11-05 22:18:29
+ * @version $Id$
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li,
+ol {
+  list-style: none;
+}
+.form .sfFormBox {
+  background: #fff;
+  max-width: 1200px;
+  position: relative;
+}
+.form .sfFormBox * {
+  box-sizing: border-box;
+}
+.form .sfFormBox a {
+  color: #666;
+}
+.form .sfFormBox input {
+  margin-bottom: 0 !important;
+}
+.form .sfFormBox input[type="text"] {
+  border: 1px solid #ccc;
+  padding: 0 5px;
+  height: 30px;
+}
+.form .sfFormBox input[type="checkbox"],
+.form .sfFormBox input[type="radio"] {
+  vertical-align: -2px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.form .sfFormBox input[type="number"] {
+  height: 20px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  width: 60px;
+  margin: 0 5px;
+  padding: 0 2px;
+  font-size: 12px;
+  color: #666;
+}
+.form .sfFormBox select {
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  padding: 0 5px;
+}
+.form .sfFormBox label {
+  line-height: 1.5;
+  cursor: pointer;
+  display: block;
+}
+.form .sfFormBox .sfFormMain {
+  width: 73%;
+  float: left;
+}
+.form .sfFormBox .sfFormMain .previewItem {
+  min-height: 70px;
+  padding-left: 20px;
+  padding: 10px 0 10px 20px;
+  border: 1px solid transparent;
+  position: relative;
+}
+.form .sfFormBox .sfFormMain .previewItem:hover {
+  cursor: pointer;
+  border: 1px dashed #ff9600;
+}
+.form .sfFormBox .sfFormMain .previewItem:hover .sort-handlerBox {
+  display: block;
+}
+.form .sfFormBox .sfFormMain .previewItem.active {
+  background: #eee;
+}
+.form .sfFormBox .sfFormMain .previewItem.active .cz {
+  display: block;
+}
+.form .sfFormBox .sfFormMain .previewItem + .previewItem {
+  margin-top: 10px;
+}
+.form .sfFormBox .sfFormMain .previewItem .readOnly {
+  color: #999;
+}
+.form .sfFormBox .sfFormMain .previewItem input[type="text"] {
+  font-size: 12px;
+  color: #999;
+  height: 30px;
+  border: 1px solid #ccc;
+  padding: 0 5px;
+}
+.form .sfFormBox .sfFormMain .previewItem input[disabled],
+.form .sfFormBox .sfFormMain .previewItem select[disabled],
+.form .sfFormBox .sfFormMain .previewItem textarea[disabled] {
+  cursor: pointer;
+}
+.form .sfFormBox .sfFormMain .previewItem textarea {
+  height: 60px;
+  border: 1px solid #ccc;
+  box-shadow: none;
+  padding: 2px 5px;
+  width: 300px;
+  resize: none;
+  line-height: 20px;
+  border-radius: 0;
+  color: #999;
+  margin-bottom: 0;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz {
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  width: 44px;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  display: none;
+  font-size: 0;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz i {
+  width: 14px;
+  text-align: center;
+  font-size: 14px;
+  vertical-align: -6px;
+  height: 14px;
+  display: inline-block;
+  background: #94c773;
+  border-radius: 50%;
+  position: relative;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .addBtn::before {
+  content: '';
+  width: 8px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  top: 6px;
+  left: 3px;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .addBtn::after {
+  content: '';
+  width: 2px;
+  height: 8px;
+  background: #fff;
+  position: absolute;
+  top: 3px;
+  left: 6px;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .delBtn::after{
+  content: '';
+  width: 8px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  background: #fff;
+  top: 6px;
+  left: 3px;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .addBtn {
+  color: #94c773;
+  margin-right: 2px;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .addBtn:hover {
+  color: #73b548;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .delBtn {
+  color: #df4949;
+  background: #df4949;
+  margin-left: 2px;
+}
+.form .sfFormBox .sfFormMain .previewItem .cz .delBtn:hover {
+  color: #c82323;
+}
+.form .sfFormBox .sfFormMain .addField {
+  border: 2px dashed #DDD;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  height: 70px;
+  line-height: 66px;
+}
+.form .sfFormBox .sfFormMain .addField:hover {
+  background: #f8f8f8;
+}
+.form .sfFormBox .sfFormMain .fieldList {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: wrap;
+      -ms-flex-flow: wrap;
+          flex-flow: wrap;
+  border: 2px dashed #DDD;
+  margin-top: 10px;
+}
+.form .sfFormBox .sfFormMain .fieldList li {
+  width: 22%;
+  background-color: #eee;
+  box-sizing: border-box;
+  margin: 5px 10px;
+  height: 28px;
+  line-height: 28px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+.form .sfFormBox .sfForm_editBox {
+  position: absolute;
+  left: 73%;
+  top: 0;
+  background: #f5f5f5;
+  transition: top ease-out 0.25s;
+  margin-left: 10px;
+}
+.form .sfFormBox .sfForm_editBox textarea {
+  border: 1px solid #ccc;
+  outline: none;
+  resize: none;
+  padding: 2px 5px;
+  margin-bottom: 0;
+  box-shadow: none;
+  width: auto;
+  transition: none;
+  border-radius: 0px;
+}
+.form .sfFormBox .sfForm_editBox textarea:focus {
+  transition: none;
+  border-color: #ccc;
+  box-shadow: none;
+  outline: none;
+}
+.form .sfFormBox .sfForm_editBox .title {
+  color: #fff;
+  background: #888;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 10px;
+}
+.form .sfFormBox .sfForm_editBox .edit_item {
+  padding: 0 10px;
+}
+.form .sfFormBox .sfForm_editBox .tit {
+  margin-top: 10px;
+}
+.form .sfFormBox .sfForm_editBox .write li {
+  margin-top: 5px;
+}
+.form .sfFormBox .sfForm_editBox input[type="text"] {
+  width: 240px;
+  display: block;
+}
+.form .sfFormBox .sfForm_editBox label {
+  line-height: inherit;
+}
+.form .sfFormBox .sfForm_editBox label.labeldiv input {
+  width: 180px!important;
+}
+.form .sfFormBox .sfForm_editBox .cz a {
+  display: inline-block;
+  padding: 0px 4px;
+  cursor: pointer;
+}
+.form .sfFormBox .sfForm_editBox .cz a:first-child {
+  margin-left: 5px;
+}
+.form .sfFormBox .sfForm_editBox .cz a.addBtn{
+  background: url("../img/icon_sort.png") no-repeat;
+  display: inline-block;
+  zoom: 1;
+  vertical-align: middle;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  width: 16px;
+  height: 16px;
+  background-position: -32px -198px;
+}
+.form .sfFormBox .sfForm_editBox .cz a.delBtn{
+  background: url("../img/icon_sort.png") no-repeat;
+  display: inline-block;
+  zoom: 1;
+  vertical-align: middle;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  width: 16px;
+  height: 16px;
+  background-position: -64px -198px;
+}
+.form .sfFormBox .sfForm_editBox .fieldEdit {
+  border: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+.form .sfFormBox .sfForm_editBox .fieldEdit::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #f5f5f5;
+  display: block;
+  position: absolute;
+  top: 42px;
+  border-color: transparent transparent #ccc #ccc;
+  border-style: solid;
+  border-width: 1px;
+  left: -7px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.form .sfFormBox .modalBox .modal {
+  width: 500px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  margin-left: -250px;
+  box-shadow: 0 0 5px #666;
+  background: #fff;
+  z-index: 200;
+}
+.form .sfFormBox .modalBox .modalBg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.form .sfFormBox .modalBox .close {
+  float: right;
+  font-size: 20px;
+  color: #fff;
+  line-height: 26px;
+  cursor: pointer;
+}
+.form .sfFormBox .modalBox .modal-header {
+  background: #ff9600;
+  padding: 7px 15px;
+  color: #fff;
+}
+.form .sfFormBox .modalBox h3 {
+  font-size: 18px;
+  line-height: 26px;
+}
+.form .sfFormBox .modalBox .modal-body {
+  padding: 25px 15px 15px 15px;
+}
+.form .sfFormBox .modalBox .modal-body textarea {
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  margin-top: 10px;
+  height: auto;
+  transition: none;
+  font-size: 12px;
+  color: #666;
+}
+.form .sfFormBox .modalBox .modal-body textarea:focus {
+  transition: none;
+  border-color: #ccc;
+  box-shadow: none;
+  outline: none;
+}
+.form .sfFormBox .modalBox .modal-footer {
+  background: #eee;
+  padding: 15px;
+}
+.form .sfFormBox .modalBox .btn {
+  display: inline;
+  color: #fff;
+  padding: 5px 30px;
+}
+.form .sfFormBox .modalBox .qxBtn {
+  background: #999;
+  border: 1px solid #999;
+  margin-left: 20px;
+}
+.form .sfFormBox .sort-handlerBox {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -22px;
+  cursor: move;
+  padding: 10px;
+  display: none;
+}
+.form .sfFormBox .sort-handler {
+  background: url("../img/icon_sort.png") no-repeat;
+  display: inline-block;
+  zoom: 1;
+  vertical-align: middle;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  width: 17px;
+  height: 24px;
+  background-position: -30px -438px;
+}
