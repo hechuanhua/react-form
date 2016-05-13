@@ -4,10 +4,11 @@
 最开始全局安装一下webpack和gulp
 ```bash
   npm install webpack gulp -g
+  
+  git clone https://github.com/hechuanhua/react-form.git 
 ```
 查看react文件夹：
 ```bash
-git clone https://github.com/hechuanhua/react-form.git 
 cd react
 npm install 
 gulp
@@ -17,7 +18,6 @@ gulp
 
 查看react-redux文件夹：
 ```bash
-git clone https://github.com/hechuanhua/react-form.git 
 cd react-redux
 npm install
 npm run dev（启动webpack-dev-server本地环境）
