@@ -8,6 +8,9 @@
   git clone https://github.com/hechuanhua/react-form.git 
 ```
 查看react文件夹：
+
+##效果预览 wbg.do1.com.cn/test/
+
 ```bash
 cd react
 npm install 
