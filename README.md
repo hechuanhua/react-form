@@ -1,6 +1,6 @@
 ##react DIY表单
 
-##react ==> 用的是es5+react实现的   效果预览 wbg.do1.com.cn/test/
+##react ==> 用的是es5+react实现的(效果预览 wbg.do1.com.cn/test/)
 最开始全局安装一下webpack和gulp
 ```bash
   npm install webpack gulp -g
