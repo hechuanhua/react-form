@@ -15,7 +15,7 @@ npm install
 gulp
 ```
 
-##react-redux  ==> 用react+redux+es6重构了一下
+##react-redux  ==> 用react+redux+es6重构了一下(效果预览 http://www.hn-lianshun.com/reactForm/)
 
 查看react-redux文件夹：
 ```bash
