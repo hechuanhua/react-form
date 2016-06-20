@@ -2,6 +2,8 @@ import React from "react"
 import {LiText}       from "../components/LiText.js"
 import {LiTextarea}   from "../components/LiTextarea.js"
 import {LiRadio}      from "../components/LiRadio.js"
+import {LiCheckbox}   from "../components/LiCheckbox.js"
+import {LiSelect}     from "../components/LiSelect.js"
 import {LiNumber}     from "../components/LiNumber.js"
 import {LiEmail}      from "../components/LiEmail.js"
 import {LiIphone}     from "../components/LiIphone.js"
@@ -14,6 +16,8 @@ const FieldList=({onclick,clickFieldList})=>{
             <LiText onclick={onclick}/>
             <LiTextarea onclick={onclick} />
             <LiRadio onclick={onclick} />
+            <LiCheckbox onclick={onclick} />
+            <LiSelect onclick={onclick} />
             <LiNumber onclick={onclick} />
             <LiEmail onclick={onclick} />
             <LiIphone onclick={onclick} />

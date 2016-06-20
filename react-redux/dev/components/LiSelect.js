@@ -1,15 +1,15 @@
 import React,{Component} from "react"
 import render from "react-dom"
 import {updateTop} from "../containers/PreviewBox.js"
-export const LiRadio=({onclick})=>{
+export const LiSelect=({onclick})=>{
     return( 
-        <li onClick={()=>{onclick("RADIO")}}>单项选择</li>
+        <li onClick={()=>{onclick("SELECT")}}>下拉框</li>
     )
 }
-const RadioPreviewLI=({data})=>{
-    return <label className="radio"><input type="radio" disabled="disabled" checked={data.checked}/>{data.value?data.value:"选项"}</label>
+const SelectPreviewLI=({data,index})=>{
+    return <option  value={index}>{data.value?data.value:"选项"}</option>
 }
-const RadioFieldAppendLI=({data,actions,index,id})=>{
+const SelectFieldAppendLI=({data,actions,index,id})=>{
     let radio,input
     return <li className="flexCenter">
                   <input type="radio" name="radio" checked={data.checked} ref={el=>{radio=el}} onChange={()=>{actions.changeValue("choicesChecked",radio.checked,id,index)}} />
@@ -23,15 +23,20 @@ const RadioFieldAppendLI=({data,actions,index,id})=>{
             </li>
 
 }
-export const PreviewRadio=({data,actions})=>{
+export const PreviewSelect=({data,actions})=>{
     var radioItem=[];
+    var active=-1;
     for(var i=0,len=data.choices.length;i<len;i++){
-        radioItem.push(<RadioPreviewLI key={i} data={data.choices[i]}/>);
+        radioItem.push(<SelectPreviewLI key={i} data={data.choices[i]} index={i}/>);
+        if(data.choices[i]["checked"]){active=i}
     };
     return <div className={data.active?"previewItem active":"previewItem"} onClick={()=>{actions.clickPreviewLi(data.id)}}>
               <div className="title">{data.title}<span className="red ml5">{data.required?"*":""}</span></div>
               <div className="readOnly">
-                      {radioItem}
+                    <select value={active} disabled>
+                        <option value="-1" >请选择</option>
+                        {radioItem}
+                    </select>  
               </div>
               <div className="sort-handlerBox"><i className="icon sort-handler"></i> </div> 
               <div className="cz">
@@ -40,7 +45,7 @@ export const PreviewRadio=({data,actions})=>{
               </div>
            </div>
 }
-export class EditRadio extends Component{
+export class EditSelect extends Component{
     constructor(props) {
         super(props)
     }
@@ -71,10 +76,10 @@ export class EditRadio extends Component{
     let title,defaultinput,tis,minValue,maxValue,required,readonly
     var radioItem=[];
     for(var i=0,len=data.choices.length;i<len;i++){
-        radioItem.push(<RadioFieldAppendLI key={i} data={data.choices[i]} id={data.id} actions={actions} index={i} />);
+        radioItem.push(<SelectFieldAppendLI key={i} data={data.choices[i]} id={data.id} actions={actions} index={i} />);
     }
     return <div className="fieldEdit radioFieldEdit"  onClick={()=>{actions.clickPreviewLi(data.id)}}>
-             <div className="title"><i className="fa fa-edit"></i>单项选择</div>
+             <div className="title"><i className="fa fa-edit"></i>下拉框</div>
              <div className="edit_item">   
                  <div className="tit">标题</div>   
                  <div className="write"> 

@@ -6,6 +6,7 @@ import EditBox from "./EditBox.js"
 import ModalBox from "./ModalBox.js"
 import PreviewBox from "./PreviewBox.js"
 import FieldList from "./FieldList.js"
+
 const clickAddFoeld=()=>{
     document.querySelector('.fieldList').style.cssText="display:flex"
     document.querySelector('.addField').style.cssText="display:none";
@@ -14,23 +15,28 @@ const clickFieldList=()=>{
     document.querySelector('.fieldList').style.cssText="display:none"
     document.querySelector('.addField').style.cssText="display:block";
 }
-const App=({data,actions,ModalBoxIsNone})=>{ 
+var isNone;
+const modalBoxIsNone=(dispatch)=>{
+    isNone=!isNone
+    document.querySelector('.modalBox').style.display=isNone?"block":"none"
+}
+const App=({data,actions,ModalBoxIsNone,ModalBoxData})=>{ 
     return(
         <div id="addField" className="sfFormBox">
-            <ModalBox data={data} actions={actions} isNone={ModalBoxIsNone} />
+            <ModalBox data={data} actions={actions} modalBoxIsNone={modalBoxIsNone} ModalBoxData={ModalBoxData} />
             <div className="sfFormMain">
-                <PreviewBox data={data} actions={actions} isNone={ModalBoxIsNone}/>
+                <PreviewBox data={data} actions={actions}/>
                 <div className="addField" onClick={clickAddFoeld}> +添加新字段</div>
                 <FieldList onclick={actions.clickLi} clickFieldList={clickFieldList}/>
             </div>
             <div className="sfForm_editBox">
-                <EditBox data={data} actions={actions} isNone={ModalBoxIsNone}/>
+                <EditBox data={data} actions={actions} modalBoxIsNone={modalBoxIsNone}/>
             </div>  
         </div>
     )
 }
 const mapStateToProps=(state)=>{
-    return {data:state.data,ModalBoxIsNone:state.ModalBoxIsNone}
+    return {data:state.data,ModalBoxIsNone:state.ModalBoxIsNone,ModalBoxData:state.ModalBoxData}
 }
 const mapDispatchToProps=(dispatch)=>{
     return {

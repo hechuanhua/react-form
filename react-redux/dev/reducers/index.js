@@ -1,4 +1,5 @@
 import {combineReducers} from "redux"
+
 const textinitState={"type":"text","title":"单行文字","default":"单行文字默认值","tis":"单行文字提示","required":false,"readonly":true,"minValue":"","maxValue":""}
 const textareainitState={"type":"textarea","title":"多行文字","default":"多行文字默认值","tis":"多行文字提示","required":false,"readonly":true,"minValue":"","maxValue":""}
 const radioinitState={"type":"radio","title":"单项选择","choices":[{"checked":false,"value":""},{"checked":true,"value":""},{"checked":false,"value":""}],"required":false,"minValue":"","maxValue":"","line_row":"1"};
@@ -160,7 +161,9 @@ const addState=(state=[],action)=>{
             var newstate=state.map(el=>{
                 if(el.id===action.id){
                     var choices=Clone(el.choices);
-                    choices.map(el=>{el.checked=false})
+                    if(action.inputType!="checkbox"){
+                        choices.map(el=>{el.checked=false})
+                    }
                     choices[action.index].checked=action.choices;
                     return Object.assign({},el,{choices:choices})
                 }else{
@@ -231,15 +234,23 @@ const addState=(state=[],action)=>{
     }
 }
 const ModalBoxIsNone=(state=false,action)=>{
-    if(action.type==="BATCHEDIT"){
+    if(action.type==="isNone"){
         return !state
     }else{
         return state
     }
 }
+const ModalBoxData=(state=[],action)=>{
+    switch(action.type){
+        case "BATCHEDIT":
+            return action.data
+        default :
+            return state
+    }
+}
 const stores = combineReducers({//合成reducers
   data:addState,
-  ModalBoxIsNone:ModalBoxIsNone
+  ModalBoxIsNone:ModalBoxIsNone,
+  ModalBoxData:ModalBoxData
 })
-
 export default stores 

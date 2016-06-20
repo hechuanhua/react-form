@@ -84,9 +84,6 @@ ol {
 .form .sfFormBox .sfFormMain .previewItem.active .cz {
   display: block;
 }
-.form .sfFormBox .sfFormMain .previewItem + .previewItem {
-  margin-top: 10px;
-}
 .form .sfFormBox .sfFormMain .previewItem .readOnly {
   color: #999;
 }

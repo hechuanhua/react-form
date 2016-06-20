@@ -1,3 +1,5 @@
+import $ from "../js/jquery.min.js"
+
 export const TEXT="TEXT"
 export const TEXTAREA="TEXTAREA"
 let nextId=0;
@@ -24,9 +26,15 @@ export const ondelete=(id)=>{
         id
     }
 }
-export const batchEdit=()=>{
+export const batchEdit=(data)=>{
     return {
-        type:"BATCHEDIT"
+        type:"BATCHEDIT",
+        data
+    }
+}
+export const isNone=()=>{
+    return {
+        type:"ISNONE",
     }
 }
 export const submitDate=(value)=>{
@@ -35,7 +43,7 @@ export const submitDate=(value)=>{
         value
     }
 }
-export const changeValue=(type,value,id,index)=>{
+export const changeValue=(type,value,id,index,inputType)=>{
     switch(type){
         case "title":
             return {type:"TITLE",title:value,id}
@@ -52,7 +60,7 @@ export const changeValue=(type,value,id,index)=>{
         case "readonly":
             return {type:"READONLY",readonly:value,id}
         case "choicesChecked":
-            return {type:"CHOICESCHECKED",choices:value,id,index}
+            return {type:"CHOICESCHECKED",choices:value,id,index,inputType}
         case "choicesInput":
             return {type:"CHOICESINPUT",choices:value,id,index}
         case "addItem":
@@ -61,5 +69,18 @@ export const changeValue=(type,value,id,index)=>{
             return {type:"DELITEM",choices:value,id,index}
     }
 }
-
+export const onajax=()=>{
+    setTimeout(function(){
+        $.ajax({
+            url:"https://www.reddit.com/r/reactjs.json",
+            async:false,
+            success:function(success){
+                dispatch({type:"TEXT"})
+            },
+            error:function(e) {
+                console.log(e)
+            }
+        })
+    }, 1000)        
+}
 

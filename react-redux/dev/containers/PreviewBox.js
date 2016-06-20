@@ -2,6 +2,8 @@ import React from "react"
 import {PreviewText}        from "../components/LiText.js"
 import {PreviewTextarea}    from "../components/LiTextarea.js"
 import {PreviewRadio}       from "../components/LiRadio.js"
+import {PreviewCheckbox}    from "../components/LiCheckbox.js"
+import {PreviewSelect}      from "../components/LiSelect.js"
 import {PreviewNumber}      from "../components/LiNumber.js"
 import {PreviewEmail}       from "../components/LiEmail.js"
 import {PreviewIphone}      from "../components/LiIphone.js"
@@ -21,6 +23,8 @@ const PreviewBox=({data,actions})=>{
                         return <PreviewRadio  key={el.id} data={el} actions={actions} />
                     case "checkbox":
                         return <PreviewCheckbox  key={el.id} data={el} actions={actions} />
+                    case "select":
+                        return <PreviewSelect  key={el.id} data={el} actions={actions} />
                     case "number":
                         return <PreviewNumber  key={el.id} data={el} actions={actions} />
                     case "iphone":

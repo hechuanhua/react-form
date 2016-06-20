@@ -48,9 +48,9 @@
 
 16、ssh-keygen -t rsa -C "youremail@example.com"    ssh的公钥生成
 
-17、git remote add origin git@github.com:michaelliao/learngit.git     把一个已有的本地仓库与远程库关联
+17、git remote add origin git@github.com:hechuanhua/react-form.git     把一个已有的本地仓库与远程库关联
 
-18、git remote add origin git@github.com:michaelliao/learngit.git      把本地仓库的内容推送到GitHub仓库
+18、git push origin master     把本地仓库的内容推送到GitHub仓库
 
 19、git checkout -b dev    创建新的分支，并且转到新的分支上，该语句可以拆分为量句话
     git branch dev     创建新的分支。

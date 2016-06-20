@@ -1,18 +1,18 @@
 import React,{Component} from "react"
 import render from "react-dom"
 import {updateTop} from "../containers/PreviewBox.js"
-export const LiRadio=({onclick})=>{
+export const LiCheckbox=({onclick})=>{
     return( 
-        <li onClick={()=>{onclick("RADIO")}}>单项选择</li>
+        <li onClick={()=>{onclick("CHECKBOX")}}>多项选择</li>
     )
 }
-const RadioPreviewLI=({data})=>{
-    return <label className="radio"><input type="radio" disabled="disabled" checked={data.checked}/>{data.value?data.value:"选项"}</label>
+const CheckboxPreviewLI=({data})=>{
+    return <label className="radio"><input type="checkbox" disabled="disabled" checked={data.checked}/>{data.value?data.value:"选项"}</label>
 }
-const RadioFieldAppendLI=({data,actions,index,id})=>{
+const CheckboxFieldAppendLI=({data,actions,index,id})=>{
     let radio,input
     return <li className="flexCenter">
-                  <input type="radio" name="radio" checked={data.checked} ref={el=>{radio=el}} onChange={()=>{actions.changeValue("choicesChecked",radio.checked,id,index)}} />
+                  <input type="checkbox" name="radio" checked={data.checked} ref={el=>{radio=el}} onChange={()=>{actions.changeValue("choicesChecked",radio.checked,id,index,"checkbox")}} />
                   <label className="labeldiv">
                     <input type="text"  placeholder="选项" value={data.value} ref={el=>{input=el}} onChange={()=>{actions.changeValue("choicesInput",input.value,id,index)}}/>
                   </label>
@@ -23,10 +23,10 @@ const RadioFieldAppendLI=({data,actions,index,id})=>{
             </li>
 
 }
-export const PreviewRadio=({data,actions})=>{
+export const PreviewCheckbox=({data,actions})=>{
     var radioItem=[];
     for(var i=0,len=data.choices.length;i<len;i++){
-        radioItem.push(<RadioPreviewLI key={i} data={data.choices[i]}/>);
+        radioItem.push(<CheckboxPreviewLI key={i} data={data.choices[i]}/>);
     };
     return <div className={data.active?"previewItem active":"previewItem"} onClick={()=>{actions.clickPreviewLi(data.id)}}>
               <div className="title">{data.title}<span className="red ml5">{data.required?"*":""}</span></div>
@@ -40,7 +40,7 @@ export const PreviewRadio=({data,actions})=>{
               </div>
            </div>
 }
-export class EditRadio extends Component{
+export class EditCheckbox extends Component{
     constructor(props) {
         super(props)
     }
@@ -71,10 +71,10 @@ export class EditRadio extends Component{
     let title,defaultinput,tis,minValue,maxValue,required,readonly
     var radioItem=[];
     for(var i=0,len=data.choices.length;i<len;i++){
-        radioItem.push(<RadioFieldAppendLI key={i} data={data.choices[i]} id={data.id} actions={actions} index={i} />);
+        radioItem.push(<CheckboxFieldAppendLI key={i} data={data.choices[i]} id={data.id} actions={actions} index={i} />);
     }
     return <div className="fieldEdit radioFieldEdit"  onClick={()=>{actions.clickPreviewLi(data.id)}}>
-             <div className="title"><i className="fa fa-edit"></i>单项选择</div>
+             <div className="title"><i className="fa fa-edit"></i>多项选择</div>
              <div className="edit_item">   
                  <div className="tit">标题</div>   
                  <div className="write"> 
